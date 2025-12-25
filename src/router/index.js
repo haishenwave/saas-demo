@@ -12,7 +12,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../views/Dashboard.vue'),
+            component: () => import('../views/DashBoard.vue'),
             children: [
                 // ✅ 关键：默认进入工作台（不带 /dashboard）
                 { path: '', name: 'home', redirect: { name: 'workbench' } },
