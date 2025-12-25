@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Workbench from '@/views/dashboard-sub/Workbench.vue'
 import ArticleCreate from '@/views/dashboard-sub/ArticleCreate.vue'
 import ArticleFeed from '@/views/dashboard-sub/ArticleFeed.vue'
-import KnowLedge from '@/views/dashboard-sub/KnowLedge.vue'
+import KnowLedge from '@/views/dashboard-sub/Knowledge.vue'
 import Prompt from '@/views/dashboard-sub/Prompt.vue'
 import ResultView from '@/views/dashboard-sub/ResultView.vue'
 
