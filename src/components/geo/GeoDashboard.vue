@@ -17,7 +17,7 @@
           </div>
           <div class="info">
             <div class="label">全部</div>
-            <div class="num">0</div>
+            <div class="num">62</div>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
 
           <div class="info">
             <div class="label">{{ item.name }}</div>
-            <div class="num">0</div>
+            <div class="num">{{item.cout}}</div>
           </div>
         </div>
       </div>
@@ -86,9 +86,7 @@
         <el-table-column label="操作" width="100" />
       </el-table>
 
-      <div class="empty-placeholder">
-        暂无数据
-      </div>
+
     </el-card>
   </div>
 </template>
@@ -102,26 +100,26 @@ defineEmits(['view-report'])
 // 修改点：数据结构调整，移除 color/bg/logoText，改为 domain
 const aiModels = ref([
   // DeepSeek
-  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'pc' },
-  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'mobile' },
+  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'pc' , cout:4},
+  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'mobile' , cout:3 },
   // 豆包
-  { name: '豆包', domain: 'doubao.com', device: 'pc' },
-  { name: '豆包', domain: 'doubao.com', device: 'mobile' },
+  { name: '豆包', domain: 'doubao.com', device: 'pc' , cout:6 },
+  { name: '豆包', domain: 'doubao.com', device: 'mobile' , cout:5 },
   // 通义千问
-  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'pc' },
-  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'mobile' },
+  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'pc' , cout:6 },
+  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'mobile' , cout:2 },
   // 腾讯元宝
-  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'pc' },
-  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'mobile' },
+  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'pc' , cout:7 },
+  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'mobile' , cout:8 },
   // 文心一言
-  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'pc' },
-  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'mobile' },
+  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'pc' , cout:5 },
+  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'mobile' , cout:5 },
   // 纳米AI
-  { name: '纳米AI', domain: 'n.cn', device: 'pc' },
-  { name: '纳米AI', domain: 'n.cn', device: 'mobile' },
-  // Kimi (新增了 Mobile 端)
-  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'pc' },
-  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'mobile' },
+  { name: '纳米AI', domain: 'n.cn', device: 'pc' , cout:2 },
+  { name: '纳米AI', domain: 'n.cn', device: 'mobile' , cout:2 },
+  // Kimi
+  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'pc' , cout:3 },
+  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'mobile' , cout:4 },
 ])
 </script>
 

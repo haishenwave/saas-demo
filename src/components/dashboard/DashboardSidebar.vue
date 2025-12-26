@@ -129,7 +129,7 @@
     <!-- 底部用户信息（无功能：不绑定点击） -->
     <div class="user-profile">
       <el-avatar :size="32" style="background:#0056b3">武</el-avatar>
-      <span style="margin-left:10px; font-size:14px; color:#333;">zdwh2ying</span>
+      <span style="margin-left:10px; font-size:14px; color:#333;">aiqibao</span>
       <el-icon class="logout-icon"><SwitchButton /></el-icon>
     </div>
   </el-aside>

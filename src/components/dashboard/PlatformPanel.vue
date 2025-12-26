@@ -6,7 +6,6 @@
       <el-col :span="4" v-for="(pf, idx) in platforms" :key="idx">
         <div class="platform-card">
           <div class="pf-header">
-            <!-- 修改点：这里改为 img 标签，并动态绑定 src -->
             <div class="pf-logo">
               <img
                   :src="`https://www.google.com/s2/favicons?domain=${pf.domain}&sz=128`"
@@ -15,13 +14,15 @@
             </div>
             <span class="pf-name">{{ pf.name }}</span>
           </div>
+          <!-- 修改点1：绑定移动端数据 -->
           <div class="pf-row">
             <span class="pf-label">移动端</span>
-            <span class="pf-num">0</span>
+            <span class="pf-num">{{ pf.mobile }}</span>
           </div>
+          <!-- 修改点2：绑定电脑端数据 -->
           <div class="pf-row">
             <span class="pf-label">电脑端</span>
-            <span class="pf-num">0</span>
+            <span class="pf-num">{{ pf.desktop }}</span>
           </div>
         </div>
       </el-col>
@@ -37,15 +38,44 @@
 import { reactive } from 'vue'
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
 
-// 修改点：我们将 icon 和 color 替换为各个平台的真实域名(domain)
-// 注意：域名一定要写对，这样才能抓取到正确的图标
+// 修改点：为每个平台添加移动端和电脑端的词数数据
 const platforms = reactive([
-  { name: 'DeepSeek', domain: 'chat.deepseek.com' },
-  { name: '豆包', domain: 'doubao.com' },
-  { name: '通义千问', domain: 'tongyi.aliyun.com' },
-  { name: '腾讯元宝', domain: 'yuanbao.tencent.com' },
-  { name: '文心一言', domain: 'yiyan.baidu.com' },
-  { name: '纳米AI', domain: 'bot.n.cn' },
+  {
+    name: 'DeepSeek',
+    domain: 'chat.deepseek.com',
+    mobile: 4,
+    desktop: 3
+  },
+  {
+    name: '豆包',
+    domain: 'doubao.com',
+    mobile: 6,
+    desktop: 5
+  },
+  {
+    name: '通义千问',
+    domain: 'tongyi.aliyun.com',
+    mobile: 6,
+    desktop: 2
+  },
+  {
+    name: '腾讯元宝',
+    domain: 'yuanbao.tencent.com',
+    mobile: 7,
+    desktop: 8
+  },
+  {
+    name: '文心一言',
+    domain: 'yiyan.baidu.com',
+    mobile: 5,
+    desktop: 5
+  },
+  {
+    name: '纳米AI',
+    domain: 'bot.n.cn',
+    mobile: 2,
+    desktop: 2
+  },
 ])
 </script>
 

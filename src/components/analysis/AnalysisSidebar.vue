@@ -34,8 +34,8 @@
     </div>
 
     <div class="user-profile">
-      <el-avatar :size="32" style="background:#e0e0e0; color:#666">武</el-avatar>
-      <span class="user-name">zdwh2ying</span>
+      <el-avatar :size="32" style="background:#e0e0e0; color:#666">艾</el-avatar>
+      <span class="user-name">aiqibao</span>
       <el-icon style="margin-left:auto; color:#999; cursor:pointer;"><SwitchButton /></el-icon>
     </div>
   </el-aside>

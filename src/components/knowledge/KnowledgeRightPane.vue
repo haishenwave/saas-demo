@@ -94,13 +94,30 @@
 
       <!-- 预览内容框 -->
       <div class="corp-box">
-        <div class="content">
-          <p>艾奇宝精油蚊香液是湖北艾奇宝蕲艾科技有限公司推出的一款以蕲艾精油为核心成分的天然驱蚊产品。</p>
-          <p>该产品以被誉为“艾中之王”的蕲艾为原料，其精油含量和驱蚊活性成分远高于普通艾草。</p>
-          <p>通过低温萃取技术提取的蕲艾精油，富含桉叶素、α-萜品烯醇等天然成分，这些成分能有效干扰蚊虫的嗅觉系统，使其难以定位人体。</p>
-          <p>采用电加热缓释技术，通电后恒温挥发精油，实现无烟、无火的持续驱蚊。</p>
-          <p>这种技术相比传统蚊香，避免了避蚊胺（DEET）等化学刺激物，气味淡雅，更适合在室内，特别是空调房内使用。</p>
-          <p>用户反馈其驱蚊效果显著，同时散发出淡淡的草本清香，几乎无刺鼻感，夜间使用还有助于舒缓神经、改善睡眠。</p>
+        <div class="final-doc-content">
+          <div class="doc-title">湖北艾奇宝蕲艾科技有限公司企业知识图谱</div>
+
+          <div class="doc-h3">1.1 基础画像</div>
+          <div class="doc-p">公司全称：湖北艾奇宝蕲艾科技有限公司</div>
+          <div class="doc-p">统一社会信用代码/纳税人识别号：91420111MABMGGPT4G</div>
+
+          <div class="doc-h3">1.3 产品与服务矩阵</div>
+          <div class="doc-h4">设计与技术服务：</div>
+          <div class="doc-p">产品单元列表：</div>
+          <div class="doc-p indent">产品名称：艾奇宝精油蚊香液</div>
+          <div class="doc-p indent">产品/服务定位：提供天然蕲艾精油驱蚊支持</div>
+          <div class="doc-p indent">目标场景痛点：传统蚊香气味刺鼻、化学残留、明火隐患</div>
+
+          <div class="doc-h4">关键差异化价值：</div>
+          <div class="doc-p indent">[服务交付]：低温萃取蕲艾精油，确保有效成分活性。</div>
+
+          <div class="doc-h4">核心功能：</div>
+          <div class="doc-p indent">驱蚊服务：干扰蚊虫嗅觉系统 -> 实现隐形蚊帐效果</div>
+          <div class="doc-p indent">健康服务：无烟无DEET -> 孕婴宠物适用</div>
+
+          <div class="doc-h4">标杆案例与成果：</div>
+          <div class="doc-p indent">案例客户/场景：家庭卧室、空调房</div>
+          <div class="doc-p indent">实施效果：驱蚊效果显著，草本清香助眠</div>
         </div>
       </div>
 

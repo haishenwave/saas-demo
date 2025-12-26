@@ -55,7 +55,7 @@ const props = defineProps({
 const emit = defineEmits(['open-upload', 'update:brandWords'])
 
 /** 左侧：知识库列表（指定输入输出） */
-const libraries = ref(['艾草'])
+const libraries = ref(['艾草','艾草产品','艾草原料','艾奇宝'])
 const activeLib = ref('艾草')
 
 const adding = ref(false)

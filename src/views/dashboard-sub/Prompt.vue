@@ -1,3 +1,5 @@
+<!-- src/views/dashboard-sub/Prompt.vue -->
+
 <template>
   <div class="prompt-page">
     <!-- 顶部导航栏 -->
@@ -10,7 +12,8 @@
       <div class="quota-info">
         <span class="info-icon">ⓘ</span>
         <span>剩余权益点：</span>
-        <span class="num">42680.5</span>
+        <!-- 修改：一个非整数，看起来像是消耗过的真实数据 -->
+        <span class="num">42690.5</span>
       </div>
     </div>
 
@@ -37,7 +40,6 @@
         </div>
 
         <div class="btn-group">
-          <!-- 这里实现了手动添加的点击事件 -->
           <button class="btn-blue-outline" @click="openAddDialog">手动添加</button>
           <button class="btn-blue-solid">新增蒸馏词</button>
         </div>
@@ -52,15 +54,26 @@
             </template>
           </el-table-column>
 
-          <el-table-column prop="trainWord" label="训练词" min-width="120" />
+          <el-table-column prop="trainWord" label="训练词 (核心词)" min-width="140" />
 
-          <el-table-column prop="distWord" label="蒸馏词" min-width="200" show-overflow-tooltip />
+          <el-table-column prop="distWord" label="蒸馏词 (用户真实问询)" min-width="260" show-overflow-tooltip />
 
-          <el-table-column prop="status" label="AI收录状态" width="120" align="center" />
+          <el-table-column prop="status" label="AI收录状态" width="120" align="center">
+            <template #default="scope">
+              <!-- 增加一点状态的色彩区分，显得更真实 -->
+              <span v-if="scope.row.status === '已收录'" style="color: #67c23a; font-weight: bold;">● 已收录</span>
+              <span v-else-if="scope.row.status === '优化中'" style="color: #e6a23c;">● 优化中</span>
+              <span v-else style="color: #909399;">--</span>
+            </template>
+          </el-table-column>
 
           <el-table-column prop="createTime" label="创建时间" width="180" align="center" />
 
-          <el-table-column prop="linkCount" label="关联语料库" width="100" align="center" />
+          <el-table-column prop="linkCount" label="关联语料" width="100" align="center">
+            <template #default="scope">
+              <span style="font-weight: bold; color: #2f6bff;">{{ scope.row.linkCount }} 篇</span>
+            </template>
+          </el-table-column>
 
           <el-table-column label="操作" width="180">
             <template #default="scope">
@@ -74,8 +87,6 @@
       <!-- 分页区域 -->
       <div class="pagination-row">
         <span class="total-text">共 {{ total }} 条</span>
-
-        <!-- 1. 修改 layout：把原来的 "prev, pager, next, sizes" 里的 sizes 删掉 -->
         <el-pagination
             background
             layout="prev, pager, next"
@@ -83,15 +94,11 @@
             v-model:current-page="currentPage"
             v-model:page-size="pageSize"
         />
-
-        <!-- 2. 新增：手动添加一个下拉框，这样中文想怎么写就怎么写 -->
         <el-select v-model="pageSize" style="width: 100px; margin: 0 8px;">
           <el-option label="10条/页" :value="10" />
           <el-option label="20条/页" :value="20" />
           <el-option label="50条/页" :value="50" />
         </el-select>
-
-        <!-- 自定义跳页部分 -->
         <span class="jump-text">前往</span>
         <el-input v-model="jumpPage" class="jump-input" />
         <span class="jump-text">页</span>
@@ -108,14 +115,14 @@
     >
       <el-form :model="form" label-width="80px">
         <el-form-item label="训练词">
-          <el-input v-model="form.trainWord" placeholder="请输入核心关键词" />
+          <el-input v-model="form.trainWord" placeholder="" />
         </el-form-item>
         <el-form-item label="蒸馏词">
           <el-input
               v-model="form.distWord"
               type="textarea"
               rows="3"
-              placeholder="请输入扩展的长尾词或问句"
+              placeholder=""
           />
         </el-form-item>
       </el-form>
@@ -132,24 +139,30 @@
 <script setup>
 import { ref, reactive } from 'vue'
 
-// ---------- 1. 列表数据 (Mock 截图数据) ----------
+// ---------- 1. 列表数据 (全套艾草行业真实数据) ----------
+// 逻辑：
+// 1. 训练词：核心产品词
+// 2. 蒸馏词：模拟用户在搜索引擎或 AI 对话框里会输入的真实长句
+// 3. 关联语料：数字随机，显得有数据积累
 const allData = [
-  { id: 1, trainWord: '艾草', distWord: '那个品牌的艾草产品更好', status: '--', createTime: '2025-12-22 20:54:51', linkCount: 0 },
-  { id: 2, trainWord: '艾草精油', distWord: '00后群体艾草精油艾草精油哪家好', status: '--', createTime: '2025-12-19 10:58:04', linkCount: 0 },
-  { id: 3, trainWord: '艾草蚊香液', distWord: '艾草蚊香液哪里有卖', status: '--', createTime: '2025-12-19 10:38:23', linkCount: 0 },
-  { id: 4, trainWord: '艾草蚊香液', distWord: '艾草蚊香液联系电话', status: '--', createTime: '2025-12-19 10:38:23', linkCount: 0 },
-  { id: 5, trainWord: '艾草蚊香液', distWord: '艾草蚊香液电话', status: '--', createTime: '2025-12-19 10:38:23', linkCount: 0 },
-  { id: 6, trainWord: '', distWord: '抗裂砂浆 武汉供应商 价格', status: '--', createTime: '2025-10-31 16:18:51', linkCount: 2 },
-  { id: 7, trainWord: '', distWord: '湖北瓷砖胶供应商', status: '--', createTime: '2025-10-31 16:18:51', linkCount: 2 },
-  { id: 8, trainWord: '', distWord: '武汉腻子粉厂家', status: '--', createTime: '2025-10-31 16:18:51', linkCount: 2 },
+  { id: 1, trainWord: '蕲艾礼盒', distWord: '过年送长辈什么健康礼品比较好？推荐高端艾草礼盒', status: '已收录', createTime: '2025-12-22 09:30:15', linkCount: 12 },
+  { id: 2, trainWord: '艾草精油', distWord: '经常肩颈酸痛用哪个牌子的艾草精油效果好', status: '已收录', createTime: '2025-12-19 14:22:10', linkCount: 8 },
+  { id: 3, trainWord: '无烟艾条', distWord: '家里有宝宝可以用艾灸吗？求推荐无烟型艾条', status: '优化中', createTime: '2025-12-15 16:45:33', linkCount: 5 },
+  { id: 4, trainWord: '艾草足浴包', distWord: '冬天手脚冰凉怎么调理？真实的艾草泡脚包去湿效果评测', status: '已收录', createTime: '2025-12-10 10:15:00', linkCount: 15 },
+  { id: 5, trainWord: '艾柱批发', distWord: '寻找源头厂家：湖北蕲春正宗陈年艾柱批发价格表', status: '--', createTime: '2025-12-05 08:50:20', linkCount: 3 },
+  { id: 6, trainWord: '智能艾灸仪', distWord: '传统艾灸太麻烦，现在流行的智能无烟艾灸仪靠谱吗', status: '已收录', createTime: '2025-11-28 11:30:45', linkCount: 9 },
+  { id: 7, trainWord: '艾草纯露', distWord: '艾草纯露在护肤方面有哪些具体的消炎镇静功效', status: '--', createTime: '2025-11-25 15:20:11', linkCount: 0 },
+  { id: 8, trainWord: '三年陈艾', distWord: '如何辨别真假三年陈艾？看颜色还是闻味道？', status: '已收录', createTime: '2025-11-22 09:10:05', linkCount: 21 },
+  { id: 9, trainWord: '艾草颈椎贴', distWord: '上班族必备好物：发热持久的艾草颈椎贴品牌推荐', status: '优化中', createTime: '2025-11-20 13:40:55', linkCount: 6 },
+  { id: 10, trainWord: '艾草种植基地', distWord: '想考察艾草种植项目，国内最大的蕲艾种植基地在哪里', status: '--', createTime: '2025-11-18 10:05:30', linkCount: 4 },
 ]
 
 const tableData = ref([...allData])
 const searchText = ref('')
-const total = ref(25)
+const total = ref(128) // 假装总数有100多条
 const currentPage = ref(1)
 const pageSize = ref(10)
-const jumpPage = ref(1) // 跳页输入框绑定
+const jumpPage = ref(1)
 
 // ---------- 2. 查询逻辑 ----------
 const handleSearch = () => {
@@ -177,7 +190,6 @@ const openAddDialog = () => {
   dialogVisible.value = true
 }
 
-// 格式化当前时间为 YYYY-MM-DD HH:mm:ss
 const getNowStr = () => {
   const now = new Date()
   const y = now.getFullYear()
@@ -196,8 +208,8 @@ const confirmAdd = () => {
     id: tableData.value.length + 1,
     trainWord: form.trainWord,
     distWord: form.distWord,
-    status: '--',
-    createTime: getNowStr(), // ✅ 修正：使用手动格式化的时间
+    status: '--', // 新增的默认未收录
+    createTime: getNowStr(),
     linkCount: 0
   }
 
@@ -210,6 +222,7 @@ const confirmAdd = () => {
 </script>
 
 <style scoped>
+/* 样式保持不变，复用之前的 CSS */
 .prompt-page {
   width: 100%;
 }
@@ -320,7 +333,7 @@ button { cursor: pointer; border-radius: 4px; padding: 8px 20px; font-weight: 60
   margin-right: 12px;
   font-weight: 500;
 }
-.text-btn.delete { color: #2f6bff; }
+.text-btn.delete { color: #f56c6c; } /* 删除改红色更符合直觉 */
 .text-btn.view { color: #2f6bff; }
 .text-btn:hover { text-decoration: underline; }
 

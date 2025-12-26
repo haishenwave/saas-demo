@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="avatar-slot right">
-          <el-avatar :size="40" style="background:#e0e0e0; color:#666;">武</el-avatar>
+          <el-avatar :size="40" style="background:#e0e0e0; color:#666;">艾</el-avatar>
         </div>
       </div>
 
@@ -116,7 +116,7 @@
               <el-icon class="expand-icon"><CaretTop /></el-icon>
             </div>
             <div class="task-mid">
-              正在使用网页工具
+              正在使用网页工具 Web Tools
             </div>
             <div class="task-body">
               <div class="info-row">

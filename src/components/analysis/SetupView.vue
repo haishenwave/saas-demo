@@ -4,14 +4,14 @@
     <!-- 欢迎语区域 -->
     <div class="welcome-section">
       <h1 class="welcome-title" style="margin-bottom: 60px">
-        您好，武汉第二营销中心 <br>
+        您好，营销推广中心 <br>
         想通过AI营销推广什么产品？
       </h1>
 
       <div class="pill-tabs">
-        <div class="pill-btn active"><el-icon><Aim /></el-icon> 网站分析</div>
-        <div class="pill-btn"><el-icon><Monitor /></el-icon> GEO智能助手</div>
-        <div class="pill-btn"><el-icon><Service /></el-icon> GEO运营托管服务</div>
+        <div class="pill-btn active"> 网站分析</div>
+        <div class="pill-btn"> GEO智能助手</div>
+        <div class="pill-btn"> GEO运营托管服务</div>
       </div>
     </div>
 

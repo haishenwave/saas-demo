@@ -78,7 +78,7 @@ const router = useRouter()
 const loading = ref(false)
 
 const form = reactive({
-  username: 'admin', // 默认填好，方便你测试
+  username: '',
   password: '',
   remember: true
 })
@@ -97,7 +97,7 @@ const handleLogin = () => {
 
     // 简单的模拟验证
     // 在这里修改账号和密码
-    if (form.username === 'admin' && form.password === '123456') {
+    if (form.username === 'aiqibao' && form.password === 'aiqibao') {
       // 1. 存储 Token (模拟)
       localStorage.setItem('geo_token', 'token-xxxxx')
 

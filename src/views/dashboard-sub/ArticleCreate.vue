@@ -6,7 +6,7 @@
       <div class="quota-info">
         <span class="info-icon">ⓘ</span>
         <span>剩余权益点：</span>
-        <span class="num">42680.5</span>
+        <span class="num">42690.5</span>
       </div>
     </div>
 
@@ -92,7 +92,7 @@
             <span class="blue-bar"></span><span class="header-title">创作文章</span>
           </div>
           <div class="header-right">
-            <span class="header-quota">剩余权益点：<span class="hq-num">42680.5</span></span>
+            <span class="header-quota">剩余权益点：<span class="hq-num">42690.5</span></span>
             <span class="close-icon" @click="close">✕</span>
           </div>
         </div>
@@ -116,7 +116,11 @@
         <div class="form-item">
           <div class="label">设置AI提示词</div>
           <div class="content col">
-            <div class="tags-input-box"><el-tag closable type="info" class="custom-tag">艾草</el-tag></div>
+            <div class="tags-input-box">
+              <el-tag closable type="info" class="custom-tag">艾奇宝</el-tag>
+              <el-tag closable type="info" class="custom-tag">精油蚊香液</el-tag>
+              <el-tag closable type="info" class="custom-tag">驱蚊</el-tag>
+            </div>
             <div class="add-link">＋ 新建AI提示词</div>
           </div>
         </div>
@@ -152,7 +156,7 @@
               </div>
             </div>
             <div class="tips-text">
-              系统将会选中素材库中图片随机选择插入文章<br>(1) 建议图片大小500*600px；<br>(2) 图片上不带各类型联系方式...
+              系统将会选中素材库中图片随机选择插入文章<br>(1) 建议图片大小500*600px；<br>(2) 图片上不带各类型联系方式
             </div>
           </div>
         </div>
@@ -277,7 +281,7 @@ const handleGenerate = () => {
   // 创建新行数据，状态为：生成中=1，完成=0，isLoading=true
   const newRow = reactive({
     taskName: createForm.taskName,
-    prompt: '艾草',
+    prompt: '艾奇宝...',
     kb: '艾草',
     assets: selectedAssets.value.length + '个素材',
     cost: createForm.articleNum,

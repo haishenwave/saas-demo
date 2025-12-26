@@ -12,7 +12,7 @@
           </div>
           <div class="dc-right">
             <div class="dc-label">提示词数</div>
-            <div class="dc-value">27</div>
+            <div class="dc-value">128</div>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
           </div>
           <div class="dc-right">
             <div class="dc-label">企业知识库</div>
-            <div class="dc-value">1</div>
+            <div class="dc-value">3</div>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           </div>
           <div class="dc-right">
             <div class="dc-label">创作文章数</div>
-            <div class="dc-value">71</div>
+            <div class="dc-value">87</div>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="dc-right">
             <div class="dc-label">投喂文章数</div>
-            <div class="dc-value">381</div>
+            <div class="dc-value">1038</div>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
           </div>
           <div class="dc-right">
             <div class="dc-label">累计上词数</div>
-            <div class="dc-value">0</div>
+            <div class="dc-value">62</div>
           </div>
         </div>
       </div>
