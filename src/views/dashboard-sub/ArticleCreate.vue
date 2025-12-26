@@ -117,9 +117,7 @@
           <div class="label">设置AI提示词</div>
           <div class="content col">
             <div class="tags-input-box">
-              <el-tag closable type="info" class="custom-tag">艾奇宝</el-tag>
               <el-tag closable type="info" class="custom-tag">精油蚊香液</el-tag>
-              <el-tag closable type="info" class="custom-tag">驱蚊</el-tag>
             </div>
             <div class="add-link">＋ 新建AI提示词</div>
           </div>
@@ -281,7 +279,7 @@ const handleGenerate = () => {
   // 创建新行数据，状态为：生成中=1，完成=0，isLoading=true
   const newRow = reactive({
     taskName: createForm.taskName,
-    prompt: '艾奇宝...',
+    prompt: '精油蚊香液',
     kb: '艾草',
     assets: selectedAssets.value.length + '个素材',
     cost: createForm.articleNum,
@@ -322,9 +320,9 @@ const tempSelectedAssets = ref([])
 const openAssetDialog = () => { assetVisible.value = true }
 
 const assetList = ref([
-  { id: 101, name: '宣传图1.jpg', type: 'image', src: getImageUrl('1.jpg') },
-  { id: 102, name: '宣传图2.jpg', type: 'image', src: getImageUrl('2.jpg') },
-  { id: 103, name: '产品实拍.jpg', type: 'image', src: getImageUrl('3.jpg') },
+  { id: 101, name: '湖北名牌', type: 'image', src: getImageUrl('1.png') },
+  { id: 102, name: '高新技术企业', type: 'image', src: getImageUrl('3.png') },
+  { id: 103, name: '地理标志保护产品', type: 'image', src: getImageUrl('10.png') },
   { id: 1, name: '120802', type: 'folder' },
   { id: 2, name: '120801', type: 'folder' },
   { id: 3, name: '1208小红书', type: 'folder' },
