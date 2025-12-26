@@ -108,16 +108,18 @@
 
             <div class="account-items">
               <div class="ac-item" v-for="(ac, idx) in accountList" :key="idx">
-                <div class="ac-logo" :style="{ background: ac.color }">
-                  {{ ac.iconTxt }}
+                <!-- 修改点 1：使用真实图标 -->
+                <div class="ac-logo">
+                  <img :src="`https://www.google.com/s2/favicons?domain=${ac.domain}&sz=128`" :alt="ac.platform" />
                 </div>
+
                 <div class="ac-info">
                   <div class="ac-name-row">
                     <span class="ac-name">{{ ac.name }}</span>
-                    <!-- 标签改为更能体现账号属性的 -->
                     <el-tag v-if="ac.tag" size="small" :type="ac.tagType" effect="plain" style="margin-left:5px; height: 18px; font-size: 10px; transform: scale(0.9);">{{ ac.tag }}</el-tag>
                   </div>
                   <div class="ac-plat">
+                    <!-- 这里可以用一个小点颜色区分，或者直接去掉 platClass -->
                     <span :class="['plat-dot', ac.platClass]"></span> {{ ac.platform }}
                   </div>
                 </div>
@@ -159,16 +161,20 @@
           <p class="label">设置发布媒体</p>
           <div class="media-grid">
             <div class="media-item selected">
-              <span style="color: #d32f2f; font-weight:900; font-family: serif; font-size: 16px;">Sina</span> 新浪新闻
+              <img src="https://www.google.com/s2/favicons?domain=sina.com.cn&sz=64" class="media-icon" />
+              新浪新闻
             </div>
             <div class="media-item">
-              <span style="color: #d32f2f; font-weight:900; font-size: 16px;">163</span> 网易新闻
+              <img src="https://www.google.com/s2/favicons?domain=163.com&sz=64" class="media-icon" />
+              网易新闻
             </div>
             <div class="media-item">
-              <span style="color: #fbc02d; font-weight:900; font-size: 16px;">SoHu</span> 搜狐新闻
+              <img src="https://www.google.com/s2/favicons?domain=sohu.com&sz=64" class="media-icon" />
+              搜狐新闻
             </div>
             <div class="media-item">
-              <span style="color: #1976d2; font-weight:900; font-size: 16px;">QQ</span> 腾讯新闻
+              <img src="https://www.google.com/s2/favicons?domain=qq.com&sz=64" class="media-icon" />
+              腾讯新闻
             </div>
           </div>
           <div class="cost-info">
@@ -328,10 +334,38 @@ const mockGroups = [
 
 // 选中后的账号展示 (大众化、无品牌关联的账号名)
 const accountList = ref([
-  { name: '娜娜的生活日记', platform: '小红书', iconTxt: '红', color: '#ff2442', platClass: 'bg-xhs', tag: '居家博主', tagType: 'danger' },
-  { name: '大白测评', platform: '抖音', iconTxt: '抖', color: '#000000', platClass: 'bg-dy', tag: '好物分享', tagType: '' },
-  { name: '每日好物精选', platform: '微信公众号', iconTxt: '微', color: '#07c160', platClass: 'bg-wx', tag: '高权重', tagType: 'success' },
-  { name: '90后宝妈CC', platform: '今日头条', iconTxt: '头', color: '#f85959', platClass: 'bg-tt', tag: '育儿达人', tagType: 'warning' }
+  {
+    name: '娜娜的生活日记',
+    platform: '快手',
+    domain: 'kuaishou.com',  // 小红书官网
+    platClass: 'bg-ks',
+    tag: '居家博主',
+    tagType: 'danger'
+  },
+  {
+    name: '大白测评',
+    platform: '抖音',
+    domain: 'douyin.com', // 抖音官网
+    platClass: 'bg-dy',
+    tag: '好物分享',
+    tagType: ''
+  },
+  {
+    name: '每日好物精选',
+    platform: '微信公众号',
+    domain: 'mp.weixin.qq.com', // 微信公众平台
+    platClass: 'bg-wx',
+    tag: '高权重',
+    tagType: 'success'
+  },
+  {
+    name: '90后宝妈CC',
+    platform: '今日头条',
+    domain: 'toutiao.com', // 今日头条
+    platClass: 'bg-tt',
+    tag: '育儿达人',
+    tagType: 'warning'
+  }
 ])
 
 const handleAddAccount = () => {
@@ -428,7 +462,24 @@ const finishPublish = () => {
 .list-label { font-size: 12px; color: #606266; margin-bottom: 12px; display: flex; align-items: center; gap: 4px; }
 .ac-item { display: flex; align-items: center; background: #fff; padding: 12px; border-radius: 6px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.03); transition: transform 0.2s; }
 .ac-item:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.ac-logo { width: 36px; height: 36px; border-radius: 8px; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; margin-right: 12px; }
+.ac-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+  background: white;
+  border: 1px solid #eee;
+  overflow: hidden; /* 确保图片圆角 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ac-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .ac-info { flex: 1; }
 .ac-name-row { display: flex; align-items: center; margin-bottom: 4px; }
 .ac-name { font-size: 14px; font-weight: 500; color: #303133; }
@@ -476,6 +527,14 @@ const finishPublish = () => {
 .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
 .media-item { border: 1px solid #dcdfe6; height: 64px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; font-size: 14px; color: #606266; cursor: pointer; }
 .media-item.selected { border-color: #409eff; background: #ecf5ff; color: #409eff; }
+.media-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
 .cost-info { border-top: 1px solid #e4e7ed; padding-top: 24px; }
 .cost-info .row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; color: #606266; }
 .blue { color: #409eff; font-weight: 500; }

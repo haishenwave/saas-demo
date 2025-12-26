@@ -10,7 +10,7 @@
 
       <!-- AI 模型卡片 Grid -->
       <div class="ai-grid">
-        <!-- 1. 全部 (特殊样式) -->
+        <!-- 1. 全部 (保持原样，作为汇总项) -->
         <div class="ai-item total-item">
           <div class="icon-wrap gradient-icon">
             <el-icon><Menu /></el-icon>
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <!-- 2. 循环渲染各个模型 -->
+        <!-- 2. 循环渲染各个模型 (使用真实图标) -->
         <div
             v-for="(item, index) in aiModels"
             :key="index"
@@ -33,10 +33,12 @@
             <el-icon v-else><Iphone /></el-icon>
           </div>
 
-          <!-- Logo 模拟 -->
-          <div class="icon-wrap" :style="{ color: item.color, background: item.bg }">
-            <component :is="item.iconComp" v-if="item.iconComp" />
-            <span v-else class="txt-logo">{{ item.logoText }}</span>
+          <!-- Logo 修改点：使用 img 标签 -->
+          <div class="icon-wrap img-wrap">
+            <img
+                :src="`https://www.google.com/s2/favicons?domain=${item.domain}&sz=128`"
+                :alt="item.name"
+            />
           </div>
 
           <div class="info">
@@ -47,7 +49,7 @@
       </div>
     </el-card>
 
-    <!-- 底部：关键词列表 -->
+    <!-- 底部：关键词列表 (保持不变) -->
     <el-card class="geo-card list-card" shadow="never">
       <div class="card-header">
         <span class="header-title">关键词列表</span>
@@ -93,25 +95,33 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Menu, Monitor, Iphone, Search, Platform, Cloudy, StarFilled } from '@element-plus/icons-vue'
+import { Menu, Monitor, Iphone, Search } from '@element-plus/icons-vue'
 
 defineEmits(['view-report'])
 
-// 复刻截图中的顺序和颜色
+// 修改点：数据结构调整，移除 color/bg/logoText，改为 domain
 const aiModels = ref([
-  { name: 'DeepSeek', logoText: 'D', color: '#409eff', bg: '#ecf5ff', device: 'pc' },
-  { name: 'DeepSeek', logoText: 'D', color: '#409eff', bg: '#ecf5ff', device: 'mobile' },
-  { name: '豆包', logoText: '豆', color: '#333', bg: '#f2f3f5', device: 'pc' }, // 模拟头像
-  { name: '豆包', logoText: '豆', color: '#333', bg: '#f2f3f5', device: 'mobile' },
-  { name: '通义千问', logoText: '通', color: '#7b1fa2', bg: '#f3e5f5', device: 'pc' },
-  { name: '通义千问', logoText: '通', color: '#7b1fa2', bg: '#f3e5f5', device: 'mobile' },
-  { name: '腾讯元宝', logoText: '腾', color: '#07c160', bg: '#e8f5e9', device: 'pc' },
-  { name: '腾讯元宝', logoText: '腾', color: '#07c160', bg: '#e8f5e9', device: 'mobile' },
-  { name: '文心一言', logoText: '文', color: '#1976d2', bg: '#e3f2fd', device: 'pc' },
-  { name: '文心一言', logoText: '文', color: '#1976d2', bg: '#e3f2fd', device: 'mobile' },
-  { name: '纳米AI', logoText: '纳', color: '#f44336', bg: '#ffebee', device: 'pc' },
-  { name: '纳米AI', logoText: '纳', color: '#f44336', bg: '#ffebee', device: 'mobile' },
-  { name: 'Kimi', logoText: 'K', color: '#000', bg: '#e0e0e0', device: 'pc' },
+  // DeepSeek
+  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'pc' },
+  { name: 'DeepSeek', domain: 'chat.deepseek.com', device: 'mobile' },
+  // 豆包
+  { name: '豆包', domain: 'doubao.com', device: 'pc' },
+  { name: '豆包', domain: 'doubao.com', device: 'mobile' },
+  // 通义千问
+  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'pc' },
+  { name: '通义千问', domain: 'tongyi.aliyun.com', device: 'mobile' },
+  // 腾讯元宝
+  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'pc' },
+  { name: '腾讯元宝', domain: 'yuanbao.tencent.com', device: 'mobile' },
+  // 文心一言
+  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'pc' },
+  { name: '文心一言', domain: 'yiyan.baidu.com', device: 'mobile' },
+  // 纳米AI
+  { name: '纳米AI', domain: 'n.cn', device: 'pc' },
+  { name: '纳米AI', domain: 'n.cn', device: 'mobile' },
+  // Kimi (新增了 Mobile 端)
+  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'pc' },
+  { name: 'Kimi', domain: 'kimi.moonshot.cn', device: 'mobile' },
 ])
 </script>
 
@@ -169,6 +179,7 @@ const aiModels = ref([
 .ai-item:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-color: #e6e6e6;
+  transform: translateY(-2px); /* 加一点点上浮效果 */
 }
 
 /* 全部卡片高亮 */
@@ -190,15 +201,31 @@ const aiModels = ref([
   opacity: 0.6;
 }
 
+/* 图标容器通用样式 */
 .icon-wrap {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* 圆形图标背景 */
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* 修改点：专门针对真实图片的样式 */
+.img-wrap {
+  background: #fff;      /* 纯白背景，避免透明图标在灰底上看不清 */
+  border: 1px solid #eee;/* 极淡的边框，界定图标范围 */
+  padding: 4px;          /* 内边距，让图标不要撑满圆，看起来更精致 */
+  overflow: hidden;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* 保持图片比例 */
+  border-radius: 50%;    /* 如果图片本身是方的，强制变圆 */
 }
 
 .info {

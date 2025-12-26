@@ -22,7 +22,7 @@
       <div class="mode-card active" @click="triggerFilePick">
         <div class="mode-text">
         <div class="mode-title-line">
-        <div class="mode-icon">⬆</div>
+          <svg class="dialog-mode-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15 4H5V20H19V8H15V4ZM3 2.9918C3 2.44405 3.44749 2 3.9985 2H16L20.9997 7L21 20.9925C21 21.5489 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918ZM13 12V16H11V12H8L12 8L16 12H13Z"></path></svg>
 
           <div class="mode-main">导入本地文档</div>
         </div>
@@ -32,7 +32,7 @@
       <div class="mode-card disabled">
         <div class="mode-text">
         <div class="mode-title-line">
-        <div class="mode-icon">✎</div>
+          <svg class="dialog-mode-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z"></path></svg>
           <div class="mode-main">输入文本</div>
         </div>
         </div>
@@ -41,7 +41,7 @@
       <div class="mode-card disabled">
         <div class="mode-text">
         <div class="mode-title-line">
-        <div class="mode-icon">⌁</div>
+          <svg class="dialog-mode-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM9.71002 19.6674C8.74743 17.6259 8.15732 15.3742 8.02731 13H4.06189C4.458 16.1765 6.71639 18.7747 9.71002 19.6674ZM10.0307 13C10.1811 15.4388 10.8778 17.7297 12 19.752C13.1222 17.7297 13.8189 15.4388 13.9693 13H10.0307ZM19.9381 13H15.9727C15.8427 15.3742 15.2526 17.6259 14.29 19.6674C17.2836 18.7747 19.542 16.1765 19.9381 13ZM4.06189 11H8.02731C8.15732 8.62577 8.74743 6.37407 9.71002 4.33256C6.71639 5.22533 4.458 7.8235 4.06189 11ZM10.0307 11H13.9693C13.8189 8.56122 13.1222 6.27025 12 4.24799C10.8778 6.27025 10.1811 8.56122 10.0307 11ZM14.29 4.33256C15.2526 6.37407 15.8427 8.62577 15.9727 11H19.9381C19.542 7.8235 17.2836 5.22533 14.29 4.33256Z"></path></svg>
           <div class="mode-main">网址解析</div>
         </div>
           <div class="mode-sub">解析单个网址内容，支持周期自动更新</div>
@@ -51,7 +51,7 @@
       <div class="mode-card disabled">
         <div class="mode-text">
         <div class="mode-title-line">
-        <div class="mode-icon">⬆</div>
+          <svg class="dialog-mode-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20ZM11 15H4V19H11V15ZM20 11H13V19H20V11ZM11 5H4V13H11V5ZM20 5H13V9H20V5Z"></path></svg>
           <div class="mode-main">整站导入</div>
         </div>
           <div class="mode-sub">整站内容解析，支持批量替换导入</div>
@@ -184,18 +184,7 @@ const onFileChange = (e) => {
   gap: 10px;
 }
 
-/* 图标样式保持即可 */
-.mode-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: rgba(47, 107, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  color: #2f6bff;
-}
+
 
 .mode-text {
   display: flex;
@@ -317,4 +306,9 @@ const onFileChange = (e) => {
   cursor: default;
 }
 
+.dialog-mode-icon {
+  width: 30px;
+  height: 30px;
+  fill: currentColor; /* 保持原来的蓝色 */
+}
 </style>

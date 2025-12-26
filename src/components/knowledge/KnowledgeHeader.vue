@@ -44,6 +44,7 @@ const setTab = (v) => {
   gap: 18px;
 }
 .tab {
+  font-size: 20px;
   padding: 10px 22px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.7);

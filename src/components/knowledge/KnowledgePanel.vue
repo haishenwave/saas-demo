@@ -40,10 +40,6 @@
         v-model:brandWords="brandWordsProxy"
         @open-upload="$emit('open-upload')"
     >
-      <!-- 生成完成后的内容区：你稍后给我文案我再替换 -->
-      <div class="corp-placeholder">
-        企业信息已生成。
-      </div>
     </KnowledgeRightPane>
   </div>
 </template>
@@ -121,6 +117,7 @@ const brandWordsProxy = computed({
 .left-head {
   display: flex;
   gap: 18px;
+  font-size: 20px;
   align-items: center;
 }
 
@@ -166,7 +163,7 @@ const brandWordsProxy = computed({
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
+  font-size: 19px;
   color: #2f6bff;
   background: rgba(47, 107, 255, 0.08);
   cursor: pointer;

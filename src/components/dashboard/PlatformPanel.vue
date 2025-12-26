@@ -6,8 +6,12 @@
       <el-col :span="4" v-for="(pf, idx) in platforms" :key="idx">
         <div class="platform-card">
           <div class="pf-header">
-            <div class="pf-logo" :style="{ background: pf.color }">
-              <el-icon color="#fff"><component :is="pf.icon" /></el-icon>
+            <!-- 修改点：这里改为 img 标签，并动态绑定 src -->
+            <div class="pf-logo">
+              <img
+                  :src="`https://www.google.com/s2/favicons?domain=${pf.domain}&sz=128`"
+                  :alt="pf.name"
+              />
             </div>
             <span class="pf-name">{{ pf.name }}</span>
           </div>
@@ -31,15 +35,17 @@
 
 <script setup>
 import { reactive } from 'vue'
-import { Platform, Goblet, Opportunity, Coin, ChatLineSquare, Cpu, ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
+import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
 
+// 修改点：我们将 icon 和 color 替换为各个平台的真实域名(domain)
+// 注意：域名一定要写对，这样才能抓取到正确的图标
 const platforms = reactive([
-  { name: 'DeepSeek', color: '#409EFF', icon: 'Platform' },
-  { name: '豆包', color: '#F56C6C', icon: 'Goblet' },
-  { name: '通义千问', color: '#8e44ad', icon: 'Opportunity' },
-  { name: '腾讯元宝', color: '#2ecc71', icon: 'Coin' },
-  { name: '文心一言', color: '#3498db', icon: 'ChatLineSquare' },
-  { name: '纳米AI', color: '#e74c3c', icon: 'Cpu' },
+  { name: 'DeepSeek', domain: 'chat.deepseek.com' },
+  { name: '豆包', domain: 'doubao.com' },
+  { name: '通义千问', domain: 'tongyi.aliyun.com' },
+  { name: '腾讯元宝', domain: 'yuanbao.tencent.com' },
+  { name: '文心一言', domain: 'yiyan.baidu.com' },
+  { name: '纳米AI', domain: 'bot.n.cn' },
 ])
 </script>
 
@@ -49,9 +55,31 @@ const platforms = reactive([
 
 .platform-card { background: white; padding: 20px; border-radius: 12px; min-height: 100px; transition: all 0.3s; border: 1px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
 .platform-card:hover { border-color: #e6f7ff; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
 .pf-header { display: flex; align-items: center; margin-bottom: 20px; }
-.pf-logo { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 8px; }
-.pf-name { font-size: 18px; color: #303133; }
+
+/* 修改点：Logo 样式调整 */
+.pf-logo {
+  width: 32px;  /* 稍微加大一点尺寸，看着更清晰 */
+  height: 32px;
+  border-radius: 50%; /* 保持圆形 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  background: #fff; /* 给一个白底，防止透明图标在灰色背景上看不清 */
+  overflow: hidden; /* 裁剪超出圆角的图片 */
+  border: 1px solid #eee; /* 加一个极淡的边框，让白色图标也能看清边界 */
+}
+
+/* 新增：图片样式 */
+.pf-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 或者 contain，取决于你想要填满还是完整显示 */
+}
+
+.pf-name { font-size: 18px; color: #303133; font-weight: 600; } /* 加了一点粗细 */
 .pf-row { display: flex; justify-content: space-between; align-items: center; font-size: 18px; color: #909399; background: #f7f8fa; height: 50px; padding: 0 12px; border-radius: 4px; margin-bottom: 10px; }
 .pf-num { font-size: 25px; font-family: "Helvetica Neue", Arial, sans-serif; font-weight: bold; color: #303133; }
 
