@@ -44,7 +44,7 @@ const router = createRouter({
 // 3. 添加路由守卫：没有Token则强制跳回登录页
 router.beforeEach((to, from, next) => {
     // 模拟从 localStorage 获取 token
-    const token = localStorage.getItem('geo_token')
+    const token = sessionStorage.getItem('geo_token')
 
     // 如果要去非登录页，且没有 token，强制去登录页
     if (to.name !== 'login' && !token) {

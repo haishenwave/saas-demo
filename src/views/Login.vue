@@ -99,7 +99,7 @@ const handleLogin = () => {
     // 在这里修改账号和密码
     if (form.username === 'dxsgeo' && form.password === 'dxsgeo') {
       // 1. 存储 Token (模拟)
-      localStorage.setItem('geo_token', 'token-xxxxx')
+      sessionStorage.setItem('geo_token', 'mock_token')
 
       ElMessage.success('登录成功')
 
