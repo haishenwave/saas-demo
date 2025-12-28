@@ -46,12 +46,8 @@ router.beforeEach((to, from, next) => {
     // 模拟从 localStorage 获取 token
     const token = localStorage.getItem('geo_token')
 
-    // 如果要去的是登录页，且已经有 token，直接去工作台
-    if (to.name === 'login' && token) {
-        next({ name: 'workbench' })
-    }
     // 如果要去非登录页，且没有 token，强制去登录页
-    else if (to.name !== 'login' && !token) {
+    if (to.name !== 'login' && !token) {
         next({ name: 'login' })
     }
     // 其他情况放行
