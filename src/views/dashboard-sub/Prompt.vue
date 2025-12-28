@@ -149,7 +149,7 @@ const allData = [
   { id: 2, trainWord: '艾草精油', distWord: '经常肩颈酸痛用哪个牌子的艾草精油效果好', status: '已收录', createTime: '2025-12-19 14:22:10', linkCount: 8 },
   { id: 3, trainWord: '无烟艾条', distWord: '家里有宝宝可以用艾灸吗？求推荐无烟型艾条', status: '优化中', createTime: '2025-12-15 16:45:33', linkCount: 5 },
   { id: 4, trainWord: '艾草足浴包', distWord: '冬天手脚冰凉怎么调理？真实的艾草泡脚包去湿效果评测', status: '已收录', createTime: '2025-12-10 10:15:00', linkCount: 15 },
-  { id: 5, trainWord: '艾柱批发', distWord: '寻找源头厂家：湖北蕲春正宗陈年艾柱批发价格表', status: '--', createTime: '2025-12-05 08:50:20', linkCount: 3 },
+  { id: 5, trainWord: '艾柱批发', distWord: '寻找源头厂家：某省蕲春正宗陈年艾柱批发价格表', status: '--', createTime: '2025-12-05 08:50:20', linkCount: 3 },
   { id: 6, trainWord: '智能艾灸仪', distWord: '传统艾灸太麻烦，现在流行的智能无烟艾灸仪靠谱吗', status: '已收录', createTime: '2025-11-28 11:30:45', linkCount: 9 },
   { id: 7, trainWord: '艾草纯露', distWord: '艾草纯露在护肤方面有哪些具体的消炎镇静功效', status: '--', createTime: '2025-11-25 15:20:11', linkCount: 0 },
   { id: 8, trainWord: '三年陈艾', distWord: '如何辨别真假三年陈艾？看颜色还是闻味道？', status: '已收录', createTime: '2025-11-22 09:10:05', linkCount: 21 },

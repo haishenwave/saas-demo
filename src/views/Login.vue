@@ -97,7 +97,7 @@ const handleLogin = () => {
 
     // 简单的模拟验证
     // 在这里修改账号和密码
-    if (form.username === 'aiqibao' && form.password === 'aiqibao') {
+    if (form.username === 'dxsgeo' && form.password === 'dxsgeo') {
       // 1. 存储 Token (模拟)
       localStorage.setItem('geo_token', 'token-xxxxx')
 

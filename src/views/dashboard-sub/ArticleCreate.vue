@@ -320,7 +320,7 @@ const tempSelectedAssets = ref([])
 const openAssetDialog = () => { assetVisible.value = true }
 
 const assetList = ref([
-  { id: 101, name: '湖北名牌', type: 'image', src: getImageUrl('1.png') },
+  { id: 101, name: 'XX名牌', type: 'image', src: getImageUrl('1.png') },
   { id: 102, name: '高新技术企业', type: 'image', src: getImageUrl('3.png') },
   { id: 103, name: '地理标志保护产品', type: 'image', src: getImageUrl('10.png') },
   { id: 1, name: '120802', type: 'folder' },

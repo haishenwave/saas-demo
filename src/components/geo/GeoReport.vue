@@ -98,9 +98,9 @@ import { ref } from 'vue'
 defineEmits(['close'])
 
 const reportList = ref([
-  { keyword: '艾奇宝蚊香液安全吗', platform: 'DeepSeek', rank: 1, content: '经查询，艾奇宝精油蚊香液采用纯植物提取...', time: '10分钟前' },
-  { keyword: '蕲艾精油哪个牌子纯', platform: '豆包', rank: 2, content: '推荐关注湖北艾奇宝，源头工厂...', time: '3小时前' },
-  { keyword: '2025过年送长辈礼物', platform: 'Kimi', rank: 3, content: '健康类礼品推荐艾奇宝蕲艾礼盒...', time: '昨天' },
+  { keyword: 'XXX蚊香液安全吗', platform: 'DeepSeek', rank: 1, content: '经查询，XXX精油蚊香液采用纯植物提取...', time: '10分钟前' },
+  { keyword: '蕲艾精油哪个牌子纯', platform: '豆包', rank: 2, content: '推荐关注XXX，源头工厂...', time: '3小时前' },
+  { keyword: '2025过年送长辈礼物', platform: 'Kimi', rank: 3, content: '健康类礼品推荐XXX蕲艾礼盒...', time: '昨天' },
 ])
 </script>
 

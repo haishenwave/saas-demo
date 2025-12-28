@@ -95,16 +95,16 @@
       <!-- 预览内容框 -->
       <div class="corp-box">
         <div class="final-doc-content">
-          <div class="doc-title">湖北艾奇宝蕲艾科技有限公司企业知识图谱</div>
+          <div class="doc-title">XXX蕲艾科技有限公司企业知识图谱</div>
 
           <div class="doc-h3">1.1 基础画像</div>
-          <div class="doc-p">公司全称：湖北艾奇宝蕲艾科技有限公司</div>
-          <div class="doc-p">统一社会信用代码/纳税人识别号：91420111MABMGGPT4G</div>
+          <div class="doc-p">公司全称：XXX蕲艾科技有限公司</div>
+          <div class="doc-p">统一社会信用代码/纳税人识别号：XXXXXXXXXXXXXXXXX</div>
 
           <div class="doc-h3">1.3 产品与服务矩阵</div>
           <div class="doc-h4">设计与技术服务：</div>
           <div class="doc-p">产品单元列表：</div>
-          <div class="doc-p indent">产品名称：艾奇宝精油蚊香液</div>
+          <div class="doc-p indent">产品名称：XXX精油蚊香液</div>
           <div class="doc-p indent">产品/服务定位：提供天然蕲艾精油驱蚊支持</div>
           <div class="doc-p indent">目标场景痛点：传统蚊香气味刺鼻、化学残留、明火隐患</div>
 
@@ -154,16 +154,16 @@
           </div>
 
           <div class="final-doc-content">
-            <div class="doc-title">湖北艾奇宝蕲艾科技有限公司企业知识图谱</div>
+            <div class="doc-title">XXX蕲艾科技有限公司企业知识图谱</div>
 
             <div class="doc-h3">1.1 基础画像</div>
-            <div class="doc-p">公司全称：湖北艾奇宝蕲艾科技有限公司</div>
-            <div class="doc-p">统一社会信用代码/纳税人识别号：91420111MABMGGPT4G</div>
+            <div class="doc-p">公司全称：XXX蕲艾科技有限公司</div>
+            <div class="doc-p">统一社会信用代码/纳税人识别号：XXXXXXXXXXXXXXXXX</div>
 
             <div class="doc-h3">1.3 产品与服务矩阵</div>
             <div class="doc-h4">设计与技术服务：</div>
             <div class="doc-p">产品单元列表：</div>
-            <div class="doc-p indent">产品名称：艾奇宝精油蚊香液</div>
+            <div class="doc-p indent">产品名称：XXX精油蚊香液</div>
             <div class="doc-p indent">产品/服务定位：提供天然蕲艾精油驱蚊支持</div>
             <div class="doc-p indent">目标场景痛点：传统蚊香气味刺鼻、化学残留、明火隐患</div>
 
@@ -241,7 +241,7 @@ const updateWord = (index, value) => {
 // 格式化展示品牌词 (Step 3 用)
 const brandWordsDisplay = computed(() => {
   const words = props.brandWords.filter(w => w && w.trim())
-  if (words.length === 0) return '艾草、艾奇宝'
+  if (words.length === 0) return '艾草'
   return words.join('、')
 })
 
